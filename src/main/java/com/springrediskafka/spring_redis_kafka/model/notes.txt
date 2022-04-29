@@ -1,0 +1,16 @@
+for zookeper to start :
+zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+
+for kafka to start :
+kafka-server-start /usr/local/etc/kafka/server.properties
+
+delete.topic.enable=true
+
+to create a topic in kafka:
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic ke3
+
+initailize a console consumer :
+kafka-console-consumer --bootstrap-server localhost:9092 --topic ke3 --from-beginning
+
+initailize a producer consumer :
+kafka-console-producer --broker-list localhost:9092 --topic ke3

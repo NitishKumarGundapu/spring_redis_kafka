@@ -1,0 +1,88 @@
+redis-server => for accessing server
+
+redis-cli => to get the redis termnal accisible
+
+redis has key value pairs : 
+
+SET KEY VALUE : to add the pair
+
+GET KEY : to get the value of key
+
+DEL KEY : to delete the pair
+
+EXISTS : to check the exixtence
+
+KEYS pattern  : to get the keys pairs
+
+flushall : to delete all data in database
+
+ttl key : gives the expiration time
+
+expire key time : the key expires after the time
+
+setex key time value : set + expiration 
+
+redis has the arrays and hash data structures:
+
+-----------------------------------------------------
+arrays :
+
+delecration : 
+
+lpush/rpush key values 
+lpop/rpop key (value - no of elements to be popped)
+
+to get all the elements : lrange key 0 -1
+
+
+-----------------------------------------------------
+sets : SADD key values
+
+127.0.0.1:6379> sadd h "a b c"
+(integer) 1
+127.0.0.1:6379> smembers h
+1) "a b c"
+127.0.0.1:6379> srem h "a"
+(integer) 0
+127.0.0.1:6379> smembers h
+1) "a b c"
+127.0.0.1:6379> srem h a
+(integer) 0
+127.0.0.1:6379> srem h "a b c"
+(integer) 1
+127.0.0.1:6379> smembers h
+(empty array)
+127.0.0.1:6379> 
+
+
+------------------------------------------------
+
+hashes: 
+
+127.0.0.1:6379> hset person name nitish
+(integer) 1
+127.0.0.1:6379> hget person name
+"nitish"
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "nitish"
+127.0.0.1:6379> hset person age 22
+(integer) 1
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "nitish"
+3) "age"
+4) "22"
+127.0.0.1:6379> hget person age
+"22"
+127.0.0.1:6379> hdel person age
+(integer) 1
+127.0.0.1:6379> hgetall
+(error) ERR wrong number of arguments for 'hgetall' command
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "nitish"
+127.0.0.1:6379> hexists person name
+(integer) 1
+127.0.0.1:6379> hexists person age
+(integer) 0
